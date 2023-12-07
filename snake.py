@@ -35,10 +35,16 @@ class Snake:
         new_square.goto(position)
         self.segment.append(new_square)
 
+    def reset(self):
+        for seg in self.segment:
+            seg.goto(1000,1000)
+        self.segment.clear()
+        self.create_snake()
+        self.head = self.segment[0]
+
     def extent(self):
         # add a new segment to snake
         self.add_segment(self.segment[-1].position())
-
 
     def up(self):
         if self.head.heading() != DOWN:
@@ -55,3 +61,4 @@ class Snake:
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
+
